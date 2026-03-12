@@ -1,0 +1,29 @@
+$ python -m app.main
+Chris Griffiths <chris@example.com> is active
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/app/main.py", line 12, in <module>
+    run()
+  File "/workspace/app/main.py", line 7, in run
+    print(build_daily_report([1, 2, 2, 3, None]))
+  File "/workspace/app/report_service.py", line 8, in build_daily_report
+    "max": max(values),
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+
+$ python -c "from app.billing import build_receipt; print(build_receipt('43', 0))"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/workspace/app/billing.py", line 22, in build_receipt
+    payment = process_payment(user_id, amount)
+  File "/workspace/app/billing.py", line 18, in process_payment
+    return retry(lambda: client.charge(user_id, amount), attempts=2)
+  File "/workspace/app/utils.py", line 21, in retry
+    raise last_error
+  File "/workspace/app/utils.py", line 16, in retry
+    return operation()
+  File "/workspace/app/billing.py", line 18, in <lambda>
+    return retry(lambda: client.charge(user_id, amount), attempts=2)
+  File "/workspace/app/billing.py", line 9, in charge
+    raise ValueError("amount must be positive")
+ValueError: amount must be positive

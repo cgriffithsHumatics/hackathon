@@ -1,0 +1,5 @@
+{app="reporting-service", level="error", pod="reporting-6d7c9b7d8b-rx2lm"} 2026-03-10T10:14:02Z failed to build daily report for user_id=42 request_id=req-9182 values=[1,2,2,3,null]
+{app="reporting-service", level="error", pod="reporting-6d7c9b7d8b-rx2lm"} 2026-03-10T10:14:02Z TypeError in report_service.build_daily_report: '>' not supported between instances of 'NoneType' and 'int'
+{app="reporting-service", level="info", pod="reporting-6d7c9b7d8b-rx2lm"} 2026-03-10T10:13:58Z received request_id=req-9182 route=/user-report/42
+{app="billing-service", level="error", pod="billing-7f4b95c6ff-kj91n"} 2026-03-10T14:21:11Z payment failed user_id=43 amount=0 error="amount must be positive"
+{app="billing-service", level="warning", pod="billing-7f4b95c6ff-kj91n"} 2026-03-10T14:21:11Z retry invoked for invalid payment payload request_id=req-9301

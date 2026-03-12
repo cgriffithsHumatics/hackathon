@@ -1,0 +1,8 @@
+Sprint Sync - March 10
+
+- Team reported confusion about where to put shared helper functions.
+- Recent bug in daily report generation was hard to reproduce from logs alone.
+- PR reviews are taking too long because reviewers need to reconstruct intent from diffs.
+- Tests exist for basic user lookup, payment success, and API happy paths, but edge cases around missing emails, empty values, and inactive users are weak.
+- Multiple people asked for better module-level documentation for billing and reporting flows.
+- Teams want better guidance on whether to add tests at the function, module, or API level.

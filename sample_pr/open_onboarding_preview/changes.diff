@@ -1,0 +1,37 @@
+diff --git a/app/api.py b/app/api.py
+index a17be31..b44df29 100644
+--- a/app/api.py
++++ b/app/api.py
+@@ -1,6 +1,7 @@
+ from app.user_service import get_user_summary
+ from app.report_service import build_daily_report, build_clean_report
+ from app.search_tools import recommend_contacts
++from app.workflows import build_onboarding_packet
+ 
+ 
+ def get_user_report(user_id, values):
+@@ -17,3 +18,8 @@ def suggest_contacts(task_text):
+     return {
+         "matches": recommend_contacts(task_text),
+     }
++
++
++def get_onboarding_preview(user_id, values, amount):
++    """Return a combined onboarding preview payload."""
++    return build_onboarding_packet(user_id, values, amount)
+diff --git a/app/main.py b/app/main.py
+index 4ac2201..5bcaa10 100644
+--- a/app/main.py
++++ b/app/main.py
+@@ -1,8 +1,10 @@
+ from app.user_service import get_user_summary
+ from app.report_service import build_daily_report
+ from app.api import get_user_report, suggest_contacts
++from app.workflows import build_onboarding_packet
+ 
+ 
+ def run():
+     print(get_user_summary("42"))
+     print(build_daily_report([1, 2, 2, 3, None]))
+     print(get_user_report("42", [10, 15, 20]))
++    print(build_onboarding_packet("44", [3, 4, 5], 19.99))

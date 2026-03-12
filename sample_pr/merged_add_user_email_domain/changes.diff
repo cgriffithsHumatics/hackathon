@@ -1,0 +1,21 @@
+diff --git a/app/user_service.py b/app/user_service.py
+index 01ab23c..91bcf03 100644
+--- a/app/user_service.py
++++ b/app/user_service.py
+@@ -15,6 +15,15 @@ def get_user(user_id):
+     if not data:
+         return None
+     return User(user_id, data["name"], data["email"], data["is_active"])
+ 
++
++def get_user_email_domain(user_id):
++    user = get_user(user_id)
++    if user is None:
++        return None
++    return user.email.split("@")[1]
++
++
+ def get_user_summary(user_id):
+     user = get_user(user_id)
+     if user is None:
+         return "user not found"

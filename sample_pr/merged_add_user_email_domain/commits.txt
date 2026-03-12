@@ -1,0 +1,2 @@
+8f23abc Add get_user_email_domain helper
+2ac91de Clean up whitespace in user_service

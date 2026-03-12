@@ -1,0 +1,11 @@
+2026-03-10 10:14:02,101 INFO app.main starting report job
+2026-03-10 10:14:02,104 INFO app.report_service building daily report for 5 values
+2026-03-10 10:14:02,108 ERROR app.main failed to build report
+Traceback (most recent call last):
+  File "/workspace/app/main.py", line 7, in run
+    print(get_user_report("42", [1, 2, 2, 3, None]))
+  File "/workspace/app/api.py", line 8, in get_user_report
+    "metrics": build_daily_report(values),
+  File "/workspace/app/report_service.py", line 8, in build_daily_report
+    "max": max(values),
+TypeError: '>' not supported between instances of 'NoneType' and 'int'

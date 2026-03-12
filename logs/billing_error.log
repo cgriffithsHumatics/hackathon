@@ -1,0 +1,13 @@
+2026-03-10 14:21:11,410 INFO app.billing starting payment attempt user_id=43 amount=0
+2026-03-10 14:21:11,511 WARNING app.utils retrying operation after error: amount must be positive
+2026-03-10 14:21:11,612 ERROR app.billing payment failed after retries
+Traceback (most recent call last):
+  File "/workspace/app/billing.py", line 18, in process_payment
+    return retry(lambda: client.charge(user_id, amount), attempts=2)
+  File "/workspace/app/utils.py", line 16, in retry
+    return operation()
+  File "/workspace/app/billing.py", line 18, in <lambda>
+    return retry(lambda: client.charge(user_id, amount), attempts=2)
+  File "/workspace/app/billing.py", line 9, in charge
+    raise ValueError("amount must be positive")
+ValueError: amount must be positive
